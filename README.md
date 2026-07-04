@@ -1,31 +1,26 @@
 # Sheafly
 
-> Your documents, sharpened. Fully offline.
+Offline desktop PDF toolkit. Does the everyday PDF stuff (merge, split, convert, compress, OCR, sign, redact) plus a real in-place editor and optional on-device AI. Nothing gets uploaded anywhere.
 
-**Sheafly** is a privacy-first desktop PDF suite. It does everything you expect from a modern PDF toolkit — merge, split, convert, compress, sign, OCR — plus a true in-place editor and opt-in **local** AI features (chat, summarize, extract), all without a single byte ever leaving your machine.
+Early work in progress.
 
-The wedge: every AI PDF tool today uploads your document to a server. Sheafly doesn't. Your contracts, medical records, and financials stay on your disk.
+## Why
 
-## Pillars
+Most PDF tools that added AI send your files off to a server. Sheafly runs everything locally, so you can work on private documents without them leaving your machine.
 
-- 🔒 **Privacy / offline first** — zero network calls in the core, verifiable redaction, metadata scrubbing, hidden-data audits.
-- ✏️ **True editing** — real text/vector editing with reflow and font matching, find-and-replace across a whole document, visual diff/compare.
-- 🤖 **Local AI (opt-in)** — chat-with-your-PDF with page-cited answers, summarization, table/invoice extraction to CSV/JSON, auto-TOC, layout-preserving translation. Runs against a bundled small model or your own local endpoint.
+## Goals
 
-See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the full feature plan.
+- The full set of everyday PDF tools
+- Real text and vector editing, not just annotation overlays
+- Local AI: chat, summarize, extract tables, translate. Uses a bundled model or your own local endpoint.
+- No telemetry, no account, works with the network off
 
-## Status
-
-🚧 Early development. The stack and PDF engine are being finalized — see the roadmap.
+The full plan is in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Building
 
-_TBD — populated once the tech stack lands._
-
-## Contributing
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Work happens on feature branches; `main` is protected and merged only via pull request.
+Not set up yet. The stack and PDF engine are still being decided, see the roadmap.
 
 ## License
 
-[MIT](LICENSE)
+MIT, see [LICENSE](LICENSE).

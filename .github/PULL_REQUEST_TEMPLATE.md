@@ -1,18 +1,18 @@
-## What & why
+## What and why
 
-<!-- What does this PR change, and why? Link any related issue: Closes #123 -->
+<!-- What changed and why. Link issues: Closes #123 -->
 
-## Type of change
+## Type
 
-- [ ] Feature (`feat`)
-- [ ] Bug fix (`fix`)
-- [ ] Docs (`docs`)
-- [ ] Refactor / chore (`refactor` / `chore`)
+- [ ] feat
+- [ ] fix
+- [ ] docs
+- [ ] refactor / chore
 
 ## Checklist
 
-- [ ] Branch is named `feat/…`, `fix/…`, `docs/…`, or `chore/…`
-- [ ] Commits follow Conventional Commits
+- [ ] Branch named `feat/`, `fix/`, `docs/`, or `chore/`
+- [ ] Conventional commit messages
 - [ ] CI passes
-- [ ] No new network calls in the offline core (or explicitly opt-in + documented)
-- [ ] Docs / roadmap updated if behavior changed
+- [ ] No new network calls in the offline core (or opt-in and documented)
+- [ ] Docs or roadmap updated if behavior changed

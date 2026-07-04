@@ -62,3 +62,6 @@ models/
 *.log
 coverage/
 .cache/
+
+# ---- Local only ----
+CLAUDE.md
