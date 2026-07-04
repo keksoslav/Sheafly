@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a feature or improvement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / use case
+      description: What are you trying to do that Sheafly can't do today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: false
+  - type: dropdown
+    id: pillar
+    attributes:
+      label: Which pillar does this fit?
+      options:
+        - Privacy / offline
+        - True editing
+        - Local AI
+        - PDF24 parity
+        - Power users / automation
+        - Other
+    validations:
+      required: false

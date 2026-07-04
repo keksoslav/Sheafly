@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify repository hygiene
+        run: |
+          set -e
+          required=(README.md LICENSE CONTRIBUTING.md SECURITY.md CODE_OF_CONDUCT.md .gitignore docs/ROADMAP.md)
+          missing=0
+          for f in "${required[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing required file: $f"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then exit 1; fi
+          echo "All required repository files present."
+
+      # NOTE: real build/test/lint steps get added here once the stack lands.
+      # This placeholder keeps a green, required 'ci' status check on every PR.
