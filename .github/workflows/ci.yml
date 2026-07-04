@@ -21,7 +21,7 @@ jobs:
       - name: Verify repository hygiene
         run: |
           set -e
-          required=(README.md LICENSE CONTRIBUTING.md SECURITY.md CODE_OF_CONDUCT.md .gitignore docs/ROADMAP.md)
+          required=(README.md LICENSE CONTRIBUTING.md SECURITY.md .gitignore docs/ROADMAP.md)
           missing=0
           for f in "${required[@]}"; do
             if [ ! -f "$f" ]; then

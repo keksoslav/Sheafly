@@ -1,83 +1,75 @@
-# Sheafly Roadmap
+# Roadmap
 
-Sheafly aims to be a feature-complete PDF24 alternative — and then go past it on three pillars: **privacy/offline**, **true editing**, and **local AI**.
+The goal is to cover everything a tool like PDF24 does, then push further on three things: offline privacy, real editing, and local AI.
 
-## Legend
+## Phase 0: foundations
 
-- `[ ]` planned · `[~]` in progress · `[x]` shipped
+- [ ] Pick the PDF engine (PDFium / MuPDF / Apryse) and app stack (Tauri or Qt)
+- [ ] Core document model and renderer
+- [ ] CI, packaging, offline-friendly updates
 
----
+## Phase 1: the basics
 
-## Phase 0 — Foundations
+Organize
+- [ ] Merge
+- [ ] Split
+- [ ] Extract, delete, reorder, rotate pages
 
-- [ ] Pick PDF engine (PDFium / MuPDF / Apryse) and app stack (Tauri / Qt)
-- [ ] Core PDF document model + renderer
-- [ ] CI, packaging, auto-update (offline-friendly)
-
-## Phase 1 — PDF24 parity (table stakes)
-
-### Organize
-- [ ] Merge PDFs
-- [ ] Split PDF
-- [ ] Extract / delete / reorder / rotate pages
-
-### Optimize
+Optimize
 - [ ] Compress
 - [ ] Flatten
 
-### Convert
-- [ ] To PDF from Word / Excel / PPT / images / HTML / text
-- [ ] From PDF to Word / images / text / HTML
+Convert
+- [ ] To PDF from Word, Excel, PowerPoint, images, HTML, text
+- [ ] From PDF to Word, images, text, HTML
 
-### Edit & annotate
+Edit and annotate
 - [ ] Annotations (highlight, notes, shapes)
 - [ ] Form filling
 
-### Security
-- [ ] Password protect / unlock
+Security
+- [ ] Password protect and unlock
 - [ ] Redact
 - [ ] Sign
 
-### Extras
+Extras
 - [ ] OCR
 - [ ] Watermark
 - [ ] Page numbers
 - [ ] Extract images
-- [ ] Compare / diff
+- [ ] Compare two files
 
----
+## Phase 2: privacy and offline
 
-## Phase 2 — Privacy / offline (pillar)
-
-- [ ] Guaranteed zero-network core + visible offline indicator / kill switch
+- [ ] Zero-network core with a visible offline indicator and a hard kill switch
 - [ ] Metadata scrubber (author, GPS, producer, timestamps, history)
-- [ ] Verifiable redaction (removes underlying data + proof report)
-- [ ] Hidden-data audit (layers, embedded files, JS, off-page content)
+- [ ] Verifiable redaction that removes the underlying data and reports what it removed
+- [ ] Hidden-data audit (layers, embedded files, JavaScript, off-page content)
 - [ ] Local encrypted vault
 
-## Phase 3 — True editing (pillar)
+## Phase 3: real editing
 
-- [ ] Real text editing with reflow + font matching
-- [ ] Find-and-replace across the whole document
-- [ ] Vector / image edit in place (crop, replace)
-- [ ] Visual + text diff between two versions
+- [ ] Text editing with reflow and font matching
+- [ ] Find and replace across the whole document
+- [ ] Vector and image editing in place (crop, replace)
+- [ ] Visual and text diff between two versions
 
-## Phase 4 — Local AI (pillar, opt-in)
+## Phase 4: local AI (opt-in)
 
-- [ ] Pluggable inference engine (bundled small model or user's local endpoint)
-- [ ] Chat-with-PDF with page-cited answers
-- [ ] Summarize document / selection
-- [ ] Table / invoice extraction → clean CSV / JSON
-- [ ] Auto-generate bookmarks / TOC from headings
-- [ ] Layout-preserving translation
+- [ ] Pluggable backend: bundled small model or the user's own local endpoint
+- [ ] Chat with a PDF, answers cited back to pages
+- [ ] Summarize a document or a selection
+- [ ] Table and invoice extraction to CSV or JSON
+- [ ] Auto bookmarks and table of contents from headings
+- [ ] Translation that keeps the layout
 - [ ] Smart rename from content
-- [ ] Alt-text generation (accessibility)
+- [ ] Alt text for images
 
-## Phase 5 — Power users (later)
+## Phase 5: power users
 
 - [ ] Batch processing with saved recipes
-- [ ] Watch-folder automation
-- [ ] CLI + scriptable core
-- [ ] Data merge (CSV + template → many PDFs)
-- [ ] Form builder + auto-detect fillable fields
-- [ ] PDF/A + PDF/UA (accessibility) compliance
+- [ ] Watch folders
+- [ ] CLI
+- [ ] Data merge (CSV plus template into many PDFs)
+- [ ] Form builder and auto-detect of fillable fields
+- [ ] PDF/A and PDF/UA compliance

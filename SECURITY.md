@@ -1,22 +1,18 @@
-# Security Policy
+# Security
 
-Sheafly's core promise is that **your documents never leave your machine**. Security and privacy are the product, so we take reports seriously.
+Sheafly's whole point is that documents stay on your machine, so privacy problems are treated as security bugs.
 
-## Reporting a vulnerability
+## Reporting
 
-Please **do not** open a public issue for security problems.
+Please don't open a public issue. Use GitHub's private vulnerability reporting (the Security tab, "Report a vulnerability"), or email the maintainer. I'll try to get back to you within a few days.
 
-Instead, use GitHub's [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability) ("Report a vulnerability" under the repo's **Security** tab), or email the maintainer.
+## What matters most
 
-We aim to acknowledge reports within 72 hours.
-
-## In scope (high priority)
-
-- **Any network egress from the core / offline mode** — if Sheafly sends document contents anywhere without explicit opt-in, that is a critical bug.
-- Redaction that does not actually remove underlying text/image data.
-- Metadata or hidden data (layers, embedded files, JS) surviving a "scrub" operation.
-- Local model / plugin sandbox escapes.
+- Any network traffic leaving the offline core without an explicit opt-in
+- Redaction that leaves the original text or image data behind
+- Metadata or hidden data surviving a scrub
+- A local model or plugin breaking out of its sandbox
 
 ## Supported versions
 
-Until a `1.0` release, only the latest `main` is supported.
+Before 1.0, only the latest `main`.
