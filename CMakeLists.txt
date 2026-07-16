@@ -30,13 +30,27 @@ else()
     set(SHEAFLY_QPDF PkgConfig::QPDF)
 endif()
 
+# PDFium: prebuilt, pinned, fetched at configure time. Defines `pdfium`
+# and PDFIUM_DLL.
+include(cmake/FetchPdfium.cmake)
+
 # --- Core: pure logic, no Qt, no network. ---
 add_library(sheafly_core STATIC
     src/core/PdfDocument.cpp
     src/core/PdfDocument.h
+    src/core/PdfRenderer.cpp
+    src/core/PdfRenderer.h
 )
 target_include_directories(sheafly_core PUBLIC src)
-target_link_libraries(sheafly_core PRIVATE ${SHEAFLY_QPDF})
+target_link_libraries(sheafly_core PRIVATE ${SHEAFLY_QPDF} pdfium)
+
+# Copies pdfium.dll next to an executable target so it runs in place.
+function(sheafly_copy_pdfium target)
+    add_custom_command(TARGET ${target} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${PDFIUM_DLL}" "$<TARGET_FILE_DIR:${target}>"
+        VERBATIM)
+endfunction()
 
 # --- App: Qt UI on top of the core. ---
 qt_add_executable(sheafly
@@ -45,6 +59,7 @@ qt_add_executable(sheafly
     src/ui/MainWindow.h
 )
 target_link_libraries(sheafly PRIVATE sheafly_core Qt6::Widgets)
+sheafly_copy_pdfium(sheafly)
 
 # No console window on Windows release builds.
 set_target_properties(sheafly PROPERTIES WIN32_EXECUTABLE $<CONFIG:Release>)
@@ -52,9 +67,14 @@ set_target_properties(sheafly PROPERTIES WIN32_EXECUTABLE $<CONFIG:Release>)
 # --- Tests ---
 enable_testing()
 
-qt_add_executable(sheafly_tests tests/test_pdfdocument.cpp)
-target_link_libraries(sheafly_tests PRIVATE sheafly_core Qt6::Test)
-target_compile_definitions(sheafly_tests PRIVATE
-    SHEAFLY_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/data")
+function(sheafly_add_test name source)
+    qt_add_executable(${name} ${source})
+    target_link_libraries(${name} PRIVATE sheafly_core Qt6::Test)
+    target_compile_definitions(${name} PRIVATE
+        SHEAFLY_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/data")
+    sheafly_copy_pdfium(${name})
+    add_test(NAME ${name} COMMAND ${name})
+endfunction()
 
-add_test(NAME sheafly_tests COMMAND sheafly_tests)
+sheafly_add_test(test_pdfdocument tests/test_pdfdocument.cpp)
+sheafly_add_test(test_pdfrenderer tests/test_pdfrenderer.cpp)
