@@ -7,7 +7,7 @@ The goal is to cover everything a tool like PDF24 does, then push further on thr
 - [x] Pick the app stack (Qt 6 / C++) and PDF engine (PDFium + QPDF), see docs/adr/0001
 - [x] App skeleton: open a PDF and show its details (pages, version, encrypted)
 - [x] CI builds and tests on MSYS2 UCRT64
-- [ ] PDFium integration: render the first page
+- [x] PDFium integration: render the first page
 - [ ] Packaging and offline-friendly updates
 
 ## Phase 1: the basics
